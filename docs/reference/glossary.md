@@ -46,6 +46,11 @@ text that carries attributes, such as `<b class="x">world</b>`, is an **Element*
 child is a Text node, not a third kind.
 _Avoid_: String, value, implicit text, explicit text.
 
+**Validate**:
+Checking a document's structure against a schema (e.g. DTD, XSD) and reporting violations.
+Separate from **Lint**, which checks style; results are shown in the same place.
+_Avoid_: Lint, verify, check.
+
 **Wrap**:
 Putting a new **Element** around a **Text node** (or other **Nodes**); the only way text gains a
 tag or **Attributes**. **Unwrap** is the inverse: remove the **Element** and keep its children.

@@ -118,3 +118,16 @@
   3. `<pre>`、`xml:space="preserve"`：內部不動。
   4. attributes 過長不換行（第一版不做）。
   5. Markdown 第一版不做格式化（縮排有語意）。
+- lint 第一版檢查：（定案）
+  1. 縮排不一致（tab／空格混用、偏離推斷單位）；混合內容、`<pre>`、`xml:space` 不查，與格式化一致。
+  2. HTML 被解析器自動修補之處（未閉合、錯置的標籤），標出無法無損的地方。
+  - 之後：重複 `id`、行尾空白等。schema 檢查屬 Validate，另案（使用者希望優先，討論中）。
+
+## Validate（O3，討論中）
+
+- Validate 為獨立功能：BACKLOG O3、P1、獨立一份 spec。lint 查寫法與風格，Validate 依 schema 查結構合法性；兩者結果顯示在同一處（O2 第 5 題一併決定）。（定案）
+- libxml2 跨平台調查（2026-11-27）：
+  - 桌面：Linux、macOS 直接可用；Windows 可行但需 MSVC 建置工具與手動設定（社群提供做法）。可靜態連結（`LIBXML2_STATIC`）。Rust 綁定 `libxml` crate 建置時需要 libclang（bindgen）。來源：https://github.com/KWARC/rust-libxml
+  - WebAssembly：`libxml` crate 不支援 wasm32；libxml2 本身可用 Emscripten 編成 wasm，現成套件 `libxml2-wasm`（瀏覽器與 Node，支援 DTD／XSD／RELAX NG 驗證）。但要從 JS 端呼叫，網頁版與桌面版會是兩條程式路徑。來源：https://github.com/jameslan/libxml2-wasm
+  - 功能風險：libxml2 NEWS 寫明 RELAX NG「狀態不佳、長期移除候選」；Schematron 2.15 起預設關閉、預計 2.16 移除；`libxml2-wasm` 已將 RELAX NG 標為 deprecated。專案由志工以盡力而為方式維護。來源：https://gitlab.gnome.org/GNOME/libxml2/-/raw/master/NEWS
+  - 結論：DTD、XSD 穩；RELAX NG 有被移除的風險。

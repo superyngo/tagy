@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### 2026-11-27
+- docs: Lint first-wave checks decided; new O3 Validate (XML only); libxml2 cross-platform findings in memo
 - docs: O2 scope, indent source, Format rules decided; Markdown front matter as one raw element (W10 for key-value editing)
 - docs: memo records order — discuss O2 first, then two specs (O1, O2)
 - docs: memo overview lists W7–W9 under decided; W5 toggle state is session-only (W8)
