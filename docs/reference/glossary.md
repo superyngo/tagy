@@ -60,6 +60,12 @@ Rewriting a document's indentation and layout on explicit user command. Never ru
 saving writes whitespace back unchanged.
 _Avoid_: Beautify, pretty-print, auto-format.
 
+**Front matter**:
+The metadata block at the top of a Markdown file (`---` YAML or `+++` TOML). Not part of
+CommonMark; tagy keeps it as one `front_matter` **Element** with a `format` attribute and one raw
+**Text node**, written back unchanged.
+_Avoid_: Metadata block, header, YAML header.
+
 **Lint**:
 Checking a document and reporting problems (e.g. inconsistent indentation) without changing it.
 _Avoid_: Validate (reserved for schema checks), fix.

@@ -9,7 +9,7 @@ last checked against the tree — not when it was opened.
 
 | ID | Opened | Verified | Pri | Finding | Evidence | Effort | Acceptance |
 |---|---|---|---|---|---|---|---|
-| O1 | 2026-11-27 | 2026-11-27 | P1 | Write the node model, **Wrap** rules, whitespace, node identity and row layout (W6–W9) into the first spec; display provisional (W5) | `docs/reference/glossary.md` **Mixed content** | S | Decision written into the first spec in `docs/spec/` |
+| O1 | 2026-11-27 | 2026-11-27 | P1 | Write the node model, **Wrap** rules, whitespace, node identity, row layout (W6–W9) and **Front matter** into the first spec; display provisional (W5) | `docs/reference/glossary.md` **Mixed content** | S | Decision written into the first spec in `docs/spec/` |
 | O2 | 2026-11-27 | 2026-11-27 | P3 | Plan **Format** and **Lint** as separate features: **Format** runs only on user command, **Lint** only reports; neither runs on save | `docs/reference/glossary.md` **Format**, **Lint** | M | Scope written into a spec in `docs/spec/` |
 
 ## Pending verification
@@ -42,6 +42,7 @@ that would promote it to Open, and the date it was last re-read.
 | W7 Decided 2026-11-27: whitespace-only **Text nodes** stay in the model and are written back unchanged on save. The tree hides only those containing a line break (indentation); same-line spaces such as `<b>a</b> <i>b</i>` show as content. Always shown inside `<pre>` and `xml:space="preserve"`. A new **Node** copies its siblings' indentation | Exploration stage; not an ADR (repo-docs 16) | First spec lands — restate there | 2026-11-27 |
 | W8 Decided 2026-11-27: each **Node** gets an internal ID at parse, stable for the editing session. Collapse state (W5) is not persisted across sessions; reopening falls back to the automatic default | Exploration stage; not an ADR (repo-docs 16) | First spec lands — restate there | 2026-11-27 |
 | W9 Decided 2026-11-27: an **Element** row shows tag and **Attributes** on one line, truncated when long; selecting it opens a detail panel that edits **Attributes** as a key-value table (after confy) | Exploration stage; not an ADR (repo-docs 16) | First spec lands — restate there | 2026-11-27 |
+| W10 Edit **Front matter** in the detail panel with a confy-style key-value editor; the tree keeps it as one **Element** with a raw **Text node** | Decided 2026-11-27 as a later extension, not first wave | Markdown editing usable and the detail panel (W9) exists | 2026-11-27 |
 
 ## Done
 
