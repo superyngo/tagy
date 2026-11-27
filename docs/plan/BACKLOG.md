@@ -9,7 +9,8 @@ last checked against the tree — not when it was opened.
 
 | ID | Opened | Verified | Pri | Finding | Evidence | Effort | Acceptance |
 |---|---|---|---|---|---|---|---|
-| O1 | 2026-11-27 | 2026-11-27 | P1 | Write the node model and **Wrap** rules (W6) into the first spec; display provisional (W5) | `docs/reference/glossary.md` **Mixed content** | S | Decision written into the first spec in `docs/spec/` |
+| O1 | 2026-11-27 | 2026-11-27 | P1 | Write the node model, **Wrap** rules, whitespace, node identity and row layout (W6–W9) into the first spec; display provisional (W5) | `docs/reference/glossary.md` **Mixed content** | S | Decision written into the first spec in `docs/spec/` |
+| O2 | 2026-11-27 | 2026-11-27 | P3 | Plan **Format** and **Lint** as separate features: **Format** runs only on user command, **Lint** only reports; neither runs on save | `docs/reference/glossary.md` **Format**, **Lint** | M | Scope written into a spec in `docs/spec/` |
 
 ## Pending verification
 
@@ -38,9 +39,9 @@ that would promote it to Open, and the date it was last re-read.
 | W4 HTML-like templates (Vue, Svelte, JSX, BBCode) out of scope | Each needs its own parser; would slow the main line | Explicit owner request | 2026-11-27 |
 | W5 Provisional 2026-11-27: **Mixed content** display — granularity defaults by auto rule (text among children → collapsed; element-only → expanded); user can toggle per **Node** and the state is remembered | Needs hands-on use to tune | First usable tree UI — re-evaluate after real use | 2026-11-27 |
 | W6 Decided 2026-11-27: two **Node** kinds only (**Element**, **Text node**); text gains a tag or attributes only by **Wrap**. **Wrap** is both manual (user command) and automatic (an action only an **Element** allows, e.g. adding an **Attribute** to a **Text node**). Automatic **Wrap** tag: default from the **Source format** or **Dialect** (HTML: `span`; generic XML: empty, user fills it; a **Dialect** may supply one), always editable by the user; not allowed in Markdown | Exploration stage; not an ADR (repo-docs 16) | First spec lands — restate there | 2026-11-27 |
-| W7 Whitespace-only **Text nodes** (XML indentation) — how the tree shows or hides them | Node model just settled; display rules not designed | Tree UI design starts | 2026-11-27 |
-| W8 Remembering per-**Node** collapse state (W5) across sessions needs a stable node identity | Display rule is provisional | W5 confirmed after hands-on use | 2026-11-27 |
-| W9 Tree UI: how an **Element** row splits and recombines tag and **Attributes** | Parked by owner until tree editor design | Tree UI design starts | 2026-11-27 |
+| W7 Decided 2026-11-27: whitespace-only **Text nodes** stay in the model and are written back unchanged on save. The tree hides only those containing a line break (indentation); same-line spaces such as `<b>a</b> <i>b</i>` show as content. Always shown inside `<pre>` and `xml:space="preserve"`. A new **Node** copies its siblings' indentation | Exploration stage; not an ADR (repo-docs 16) | First spec lands — restate there | 2026-11-27 |
+| W8 Decided 2026-11-27: each **Node** gets an internal ID at parse, stable for the editing session. Collapse state (W5) is not persisted across sessions; reopening falls back to the automatic default | Exploration stage; not an ADR (repo-docs 16) | First spec lands — restate there | 2026-11-27 |
+| W9 Decided 2026-11-27: an **Element** row shows tag and **Attributes** on one line, truncated when long; selecting it opens a detail panel that edits **Attributes** as a key-value table (after confy) | Exploration stage; not an ADR (repo-docs 16) | First spec lands — restate there | 2026-11-27 |
 
 ## Done
 

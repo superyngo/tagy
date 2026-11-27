@@ -55,6 +55,15 @@ allows (e.g. adds an **Attribute** to a **Text node**). An automatic wrap pre-fi
 not allow automatic wrap.
 _Avoid_: Promote, lift.
 
+**Format**:
+Rewriting a document's indentation and layout on explicit user command. Never runs on save;
+saving writes whitespace back unchanged.
+_Avoid_: Beautify, pretty-print, auto-format.
+
+**Lint**:
+Checking a document and reporting problems (e.g. inconsistent indentation) without changing it.
+_Avoid_: Validate (reserved for schema checks), fix.
+
 **Mixed content**:
 An **Element** whose children interleave **Text nodes** and **Elements**, as in
 `<p>Hello <b>world</b>!</p>`. Order and whitespace may be significant. How the tree shows it is
