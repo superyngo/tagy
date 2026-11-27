@@ -4,9 +4,21 @@ Canonical vocabulary for tagy. Code identifiers, UI strings, commit messages, an
 document use these terms. A new term gets its entry here in the same commit.
 
 **Source format**:
-The markup language a file is written in: XML, HTML, or Markdown. OOXML is a planned later
-source format. tagy edits a file in its own source format and never converts between them.
+The markup language a file is written in: XML, HTML, or Markdown. Package formats (OOXML, then
+EPUB and ODF) are planned later. tagy edits a file in its own source format and never converts
+between them.
 _Avoid_: Language, file type.
+
+**Dialect**:
+A vocabulary on top of a **Source format**, chiefly XML: SVG, RSS/Atom, MathML, XAML, plist,
+and so on. A dialect shares its source format's parser and **Document tree**; it only adds
+features of its own (e.g. an SVG preview) through an extensible layer.
+_Avoid_: Format, schema, flavor.
+
+**Dialect detection**:
+Choosing a file's **Dialect**: by file extension first, then by root element name and
+namespace when the extension is ambiguous (e.g. `.xml`).
+_Avoid_: Sniffing, format detection.
 
 **Document tree**:
 The tree tagy builds from one file, shared by every **Source format**: one parse, operation, and

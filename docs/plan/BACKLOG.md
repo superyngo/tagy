@@ -33,7 +33,9 @@ that would promote it to Open, and the date it was last re-read.
 | Item | Why not now | Trigger | Re-read |
 |---|---|---|---|
 | W1 Scope decided 2026-11-27: no conversion between source formats; one shared tree parse / edit logic / UI; any tree has an **XML export**; Markdown nodes use **CommonMark XML** names | Exploration stage; nothing builds on it yet, so not an ADR (repo-docs 16) | First spec lands — restate there; ADR once a persisted format or public interface depends on it | 2026-11-27 |
-| W2 OOXML as a source format (zip package of XML parts) | XML, HTML, Markdown first | XML editing ships | 2026-11-27 |
+| W2 Package formats — OOXML first, then EPUB and ODF (zip packages of XML parts, one shared packaging layer) | XML, HTML, Markdown first | XML editing ships | 2026-11-27 |
+| W3 **Dialects** decided 2026-11-27: SVG and other XML dialects (RSS/Atom, MathML, XAML, plist, …) ship with XML on the one XML parser; per-dialect features are an extensible layer; **Dialect detection** by file extension first, then root element and namespace | Exploration stage; extension API not designed yet | First spec lands — design the dialect extension point there | 2026-11-27 |
+| W4 HTML-like templates (Vue, Svelte, JSX, BBCode) out of scope | Each needs its own parser; would slow the main line | Explicit owner request | 2026-11-27 |
 
 ## Done
 

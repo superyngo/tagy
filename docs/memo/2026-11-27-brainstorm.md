@@ -35,3 +35,11 @@
 ## 尚未決定
 
 - 混合內容（`<p>你好 <b>世界</b>！</p>`）在樹中如何呈現：每段文字展開成節點，還是收合成一行整段編輯？
+
+## 追加定案（2026-11-27，已確認）
+
+- SVG 及其他 XML 方言（RSS/Atom、MathML、XAML、plist、pom.xml、Android layout、GPX/KML、DocBook…）跟 XML 一起做，共用 XML 解析器。
+- 針對方言提供彈性擴展（例如 SVG 預覽）。
+- 方言偵測：副檔名優先，再看根元素和 namespace（例如 `.xml` 分不出 RSS 還是 Maven）。
+- EPUB、ODF 列入 OOXML 後續規劃（同為 zip 包多個 XML）。
+- HTML 模板（Vue、Svelte、JSX、BBCode）先不做。
