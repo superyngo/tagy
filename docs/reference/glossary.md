@@ -49,6 +49,8 @@ _Avoid_: String, value, implicit text, explicit text.
 **Wrap**:
 Putting a new **Element** around a **Text node** (or other **Nodes**); the only way text gains a
 tag or **Attributes**. **Unwrap** is the inverse: remove the **Element** and keep its children.
+Wrap runs on a user command, or automatically when the user does something only an **Element**
+allows (e.g. adds an **Attribute** to a **Text node**).
 _Avoid_: Promote, lift.
 
 **Mixed content**:

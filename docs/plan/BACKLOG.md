@@ -9,7 +9,7 @@ last checked against the tree — not when it was opened.
 
 | ID | Opened | Verified | Pri | Finding | Evidence | Effort | Acceptance |
 |---|---|---|---|---|---|---|---|
-| O1 | 2026-11-27 | 2026-11-27 | P1 | Decide when **Wrap** happens (manual vs. triggered by an action); node model decided (W6), display provisional (W5) | `docs/reference/glossary.md` **Mixed content** | S | Decision written into the first spec in `docs/spec/` |
+| O1 | 2026-11-27 | 2026-11-27 | P1 | Decide which tag an automatic **Wrap** uses; node model and wrap timing decided (W6), display provisional (W5) | `docs/reference/glossary.md` **Mixed content** | S | Decision written into the first spec in `docs/spec/` |
 
 ## Pending verification
 
@@ -37,7 +37,7 @@ that would promote it to Open, and the date it was last re-read.
 | W3 **Dialects** decided 2026-11-27: SVG and other XML dialects (RSS/Atom, MathML, XAML, plist, …) ship with XML on the one XML parser; per-dialect features are an extensible layer; **Dialect detection** by file extension first, then root element and namespace | Exploration stage; extension API not designed yet | First spec lands — design the dialect extension point there | 2026-11-27 |
 | W4 HTML-like templates (Vue, Svelte, JSX, BBCode) out of scope | Each needs its own parser; would slow the main line | Explicit owner request | 2026-11-27 |
 | W5 Provisional 2026-11-27: **Mixed content** display — granularity defaults by auto rule (text among children → collapsed; element-only → expanded); user can toggle per **Node** and the state is remembered | Needs hands-on use to tune | First usable tree UI — re-evaluate after real use | 2026-11-27 |
-| W6 Decided 2026-11-27: two **Node** kinds only (**Element**, **Text node**); text gains a tag or attributes only by **Wrap**. Open: when **Wrap** happens — owner leans to manual only (tag chosen first), unconfirmed | Exploration stage; not an ADR (repo-docs 16) | First spec lands — restate there | 2026-11-27 |
+| W6 Decided 2026-11-27: two **Node** kinds only (**Element**, **Text node**); text gains a tag or attributes only by **Wrap**. **Wrap** is both manual (user command) and automatic (an action only an **Element** allows, e.g. adding an **Attribute** to a **Text node**) | Exploration stage; not an ADR (repo-docs 16) | First spec lands — restate there | 2026-11-27 |
 
 ## Done
 
