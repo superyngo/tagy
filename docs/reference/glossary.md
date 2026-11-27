@@ -50,7 +50,9 @@ _Avoid_: String, value, implicit text, explicit text.
 Putting a new **Element** around a **Text node** (or other **Nodes**); the only way text gains a
 tag or **Attributes**. **Unwrap** is the inverse: remove the **Element** and keep its children.
 Wrap runs on a user command, or automatically when the user does something only an **Element**
-allows (e.g. adds an **Attribute** to a **Text node**).
+allows (e.g. adds an **Attribute** to a **Text node**). An automatic wrap pre-fills a tag from the
+**Source format** or **Dialect** (empty for generic XML), which the user can change; Markdown does
+not allow automatic wrap.
 _Avoid_: Promote, lift.
 
 **Mixed content**:

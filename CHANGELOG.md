@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### 2026-11-27
+- docs: decide automatic Wrap tag rule (format/dialect default, editable; none in Markdown)
 - docs: decide Wrap timing (manual and automatic)
 - docs: decide two-node model (Element, Text node) and Wrap/Unwrap; wrap timing still open
 - docs: record provisional mixed-content display rule (auto default, manual toggle remembered)
