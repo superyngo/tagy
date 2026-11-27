@@ -11,7 +11,7 @@ last checked against the tree — not when it was opened.
 |---|---|---|---|---|---|---|---|
 | O1 | 2026-11-27 | 2026-11-27 | P1 | Write the node model, **Wrap** rules, whitespace, node identity, row layout (W6–W9) and **Front matter** into the first spec; display provisional (W5) | `docs/reference/glossary.md` **Mixed content** | S | Decision written into the first spec in `docs/spec/` |
 | O2 | 2026-11-27 | 2026-11-27 | P3 | Plan **Format** and **Lint** as separate features: **Format** runs only on user command, **Lint** only reports; neither runs on save | `docs/reference/glossary.md` **Format**, **Lint** | M | Scope written into a spec in `docs/spec/` |
-| O3 | 2026-11-27 | 2026-11-27 | P1 | Plan **Validate** as its own feature: schema checks of structure, results shown with **Lint**; first wave XML only: DTD (self-implemented) and XSD (pure-Rust crate, chosen after a wasm build spike of `xsd-schema` vs `xmlschema`); no libxml2, no RELAX NG | `docs/memo/2026-11-27-brainstorm.md` Validate section | M | Scope written into its own spec in `docs/spec/` |
+| O3 | 2026-11-27 | 2026-11-27 | P1 | Plan **Validate** as its own feature: schema checks of structure, results shown with **Lint**; first wave XML only: DTD (self-implemented) and XSD (pure-Rust crate, chosen after a `wasm32-unknown-unknown` build spike of `xsd-schema` vs `xmlschema`); no libxml2, no RELAX NG | `docs/memo/2026-11-27-brainstorm.md` Validate section | M | Scope written into its own spec in `docs/spec/` |
 
 ## Pending verification
 
@@ -44,6 +44,7 @@ that would promote it to Open, and the date it was last re-read.
 | W8 Decided 2026-11-27: each **Node** gets an internal ID at parse, stable for the editing session. Collapse state (W5) is not persisted across sessions; reopening falls back to the automatic default | Exploration stage; not an ADR (repo-docs 16) | First spec lands — restate there | 2026-11-27 |
 | W9 Decided 2026-11-27: an **Element** row shows tag and **Attributes** on one line, truncated when long; selecting it opens a detail panel that edits **Attributes** as a key-value table (after confy) | Exploration stage; not an ADR (repo-docs 16) | First spec lands — restate there | 2026-11-27 |
 | W10 Edit **Front matter** in the detail panel with a confy-style key-value editor; the tree keeps it as one **Element** with a raw **Text node** | Decided 2026-11-27 as a later extension, not first wave | Markdown editing usable and the detail panel (W9) exists | 2026-11-27 |
+| W11 Decided 2026-11-27: architecture follows confy — `tagy-core` (pure Rust: parse, tree model, lossless edit, **Format**, **Lint**, **Validate**, all editor state; no file I/O, no C dependency, must build for `wasm32-unknown-unknown`), `tagy-tui` (ratatui, native), `tagy-ffi` (wasm-bindgen), `web/` (TypeScript UI), `tagy-tauri` (Tauri shell over the web UI, desktop and mobile, native file I/O only; editing runs in the in-webview wasm core) | Exploration stage; not an ADR (repo-docs 16) | First code lands — promote to an ADR and `docs/reference/ARCHITECTURE.md` | 2026-11-27 |
 
 ## Done
 

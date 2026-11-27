@@ -18,6 +18,7 @@
   - 觸發：手動指令，或自動（對文字節點做只有 element 能做的事，例如加 attribute）。
   - 自動包裹的 tag：格式或方言給預設值，使用者可改。HTML 預設 `<span>`；通用 XML 留空由使用者填，方言可提供預設；Markdown 不允許自動包裹。
 - **Markdown metadata（front matter）**：`---` YAML 或 `+++` TOML 整塊當成一個 `front_matter` element（`format="yaml"`／`"toml"`），底下一個文字節點存原文；存檔原樣寫回，格式化與 lint 不碰。之後：選取時在詳細面板用 confy 的鍵值編輯器開啟（W10）。
+- **架構**：比照 confy，TUI → web → app（桌面／行動）通吃。`tagy-core`（純 Rust：解析、樹模型、無損編輯、格式化、lint、Validate、所有編輯狀態；不做檔案 I/O、無 C 依賴，必須能編成 `wasm32-unknown-unknown`）、`tagy-tui`（ratatui，原生呼叫 core）、`tagy-ffi`（wasm-bindgen 包裝）、`web/`（TypeScript UI）、`tagy-tauri`（包住 web UI 的 Tauri 外殼，只補原生檔案 I/O；編輯在 webview 內的 wasm core 進行）（W11）。
 - **空白文字節點（W7）**：保留在模型中，存檔原樣寫回（無損）。樹上只隱藏含換行的空白（縮排）；同一行的空格（如 `<b>甲</b> <i>乙</i>`）是內容，照常顯示。`<pre>`、`xml:space="preserve"` 內一律顯示。新節點的縮排參考兄弟節點。
 - **格式化與 lint**：另行規劃。格式化只由使用者下指令執行；lint 只指出問題、不改檔；兩者都不在存檔時自動執行。
 - **節點識別（W8）**：解析時給每個節點內部 ID，同一次編輯期間不變。跨工作階段不保存收合狀態，重開回到自動預設。
@@ -139,3 +140,4 @@
   - 自行從頭實作 XSD：規格龐大（型別衍生、替換群組、identity constraint、約 45 種內建型別、自有 regex 方言、import／include），不划算。DTD 規模小，可自行實作。
 - 決定（2026-11-27）：不用 libxml2。XSD 採純 Rust crate，先做 wasm 實驗比較 `xsd-schema` 與 `xmlschema` 再選；DTD 自行實作。（定案）
 - 使用者補充：UI 打算用 Tauri 跨平台。
+- 決定（2026-11-27）：架構比照 confy（見總覽「架構」）。純 Rust 驗證的另一理由：TUI 沒有 JS，`libxml2-wasm` 在 TUI 用不了。（定案）
