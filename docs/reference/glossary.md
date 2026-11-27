@@ -48,7 +48,8 @@ _Avoid_: String, value, implicit text, explicit text.
 
 **Validate**:
 Checking a document's structure against a schema (e.g. DTD, XSD) and reporting violations.
-Separate from **Lint**, which checks style; results are shown in the same place.
+Separate from **Lint**, which checks style; results are shown in the same place and run on the
+same schedule. Never blocks editing or saving.
 _Avoid_: Lint, verify, check.
 
 **Wrap**:
@@ -73,6 +74,7 @@ _Avoid_: Metadata block, header, YAML header.
 
 **Lint**:
 Checking a document and reporting problems (e.g. inconsistent indentation) without changing it.
+Runs after each committed edit, paused while an edit is open; never blocks editing or saving.
 _Avoid_: Validate (reserved for schema checks), fix.
 
 **Mixed content**:

@@ -20,7 +20,7 @@
 - **Markdown metadata（front matter）**：`---` YAML 或 `+++` TOML 整塊當成一個 `front_matter` element（`format="yaml"`／`"toml"`），底下一個文字節點存原文；存檔原樣寫回，格式化與 lint 不碰。之後：選取時在詳細面板用 confy 的鍵值編輯器開啟（W10）。
 - **架構**：比照 confy，TUI → web → app（桌面／行動）通吃。`tagy-core`（純 Rust：解析、樹模型、無損編輯、格式化、lint、Validate、所有編輯狀態；不做檔案 I/O、無 C 依賴，必須能編成 `wasm32-unknown-unknown`）、`tagy-tui`（ratatui，原生呼叫 core）、`tagy-ffi`（wasm-bindgen 包裝）、`web/`（TypeScript UI）、`tagy-tauri`（包住 web UI 的 Tauri 外殼，只補原生檔案 I/O；編輯在 webview 內的 wasm core 進行）（W11）。
 - **空白文字節點（W7）**：保留在模型中，存檔原樣寫回（無損）。樹上只隱藏含換行的空白（縮排）；同一行的空格（如 `<b>甲</b> <i>乙</i>`）是內容，照常顯示。`<pre>`、`xml:space="preserve"` 內一律顯示。新節點的縮排參考兄弟節點。
-- **格式化與 lint**：另行規劃。格式化只由使用者下指令執行；lint 只指出問題、不改檔；兩者都不在存檔時自動執行。
+- **格式化、lint、Validate**：格式化只由使用者下指令執行（整份或子樹）；lint 與 Validate 只指出問題、不改檔，於開檔、載入 schema、每次編輯提交後即時執行，編輯期間暫停；只提示、不擋編輯與存檔。細節見下方 O2、O3 兩節。
 - **節點識別（W8）**：解析時給每個節點內部 ID，同一次編輯期間不變。跨工作階段不保存收合狀態，重開回到自動預設。
 - **列的顯示（W9）**：tag 與 attributes 同一列顯示，過長截斷；選取後在詳細面板以鍵值表編輯 attributes（借用 confy）。
 
@@ -109,7 +109,7 @@
 - 補充：只隱藏含換行的空白。
 - W8、W9 採 A（見總覽）。
 
-## 格式化與 lint（O2，討論中）
+## 格式化與 lint（O2，討論完畢）
 
 - 範圍：整份文件與選取的子樹都支援（子樹格式化可讓 diff 只限於正在改的部分）。（定案）
 - 縮排來源：預設依序退回（從檔案推斷 → 使用者設定 → 格式預設）；另有全域設定可改為一律使用使用者設定。（定案）
@@ -124,7 +124,7 @@
   2. HTML 被解析器自動修補之處（未閉合、錯置的標籤），標出無法無損的地方。
   - 之後：重複 `id`、行尾空白等。schema 檢查屬 Validate，另案（使用者希望優先，討論中）。
 
-## Validate（O3，討論中）
+## Validate（O3，討論完畢）
 
 - Validate 為獨立功能：BACKLOG O3、P1、獨立一份 spec。lint 查寫法與風格，Validate 依 schema 查結構合法性；兩者結果顯示在同一處（O2 第 5 題一併決定）。（定案）
 - libxml2 跨平台調查（2026-11-27）：
@@ -141,3 +141,8 @@
 - 決定（2026-11-27）：不用 libxml2。XSD 採純 Rust crate，先做 wasm 實驗比較 `xsd-schema` 與 `xmlschema` 再選；DTD 自行實作。（定案）
 - 使用者補充：UI 打算用 Tauri 跨平台。
 - 決定（2026-11-27）：架構比照 confy（見總覽「架構」）。純 Rust 驗證的另一理由：TUI 沒有 JS，`libxml2-wasm` 在 TUI 用不了。（定案）
+- O2 第 5 題，結果呈現（lint 與 Validate 共用）：（定案）
+  1. 樹上標記：有問題的列顯示嚴重度（顏色＋符號），問題在收合的子孫裡時，標記冒泡到祖先列。
+  2. 問題清單：TUI 底部窗格、web／app 面板；點一筆跳到節點。
+  3. 一鍵修正：只限 lint「縮排不一致」，做法是對該子樹執行格式化；Validate 不自動修正。
+  4. 執行時機（比照 confy）：開檔、載入 schema、每次編輯提交後即時執行；編輯框開著時暫停，顯示上次提交的結果；只提示，不擋編輯與存檔（confy 的 Soft constraint）。大檔案效能（debounce、只查變動子樹）留到實作。

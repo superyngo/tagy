@@ -10,7 +10,7 @@ last checked against the tree — not when it was opened.
 | ID | Opened | Verified | Pri | Finding | Evidence | Effort | Acceptance |
 |---|---|---|---|---|---|---|---|
 | O1 | 2026-11-27 | 2026-11-27 | P1 | Write the node model, **Wrap** rules, whitespace, node identity, row layout (W6–W9) and **Front matter** into the first spec; display provisional (W5) | `docs/reference/glossary.md` **Mixed content** | S | Decision written into the first spec in `docs/spec/` |
-| O2 | 2026-11-27 | 2026-11-27 | P3 | Plan **Format** and **Lint** as separate features: **Format** runs only on user command, **Lint** only reports; neither runs on save | `docs/reference/glossary.md` **Format**, **Lint** | M | Scope written into a spec in `docs/spec/` |
+| O2 | 2026-11-27 | 2026-11-27 | P3 | Write the **Format** and **Lint** spec: **Format** runs only on user command (document or subtree); **Lint** only reports, runs after each committed edit and pauses while an edit is open, never blocks; results shared with **Validate** (tree markers + problems list) | `docs/memo/2026-11-27-brainstorm.md` O2 section | M | Its own spec in `docs/spec/`, citing the O1 spec |
 | O3 | 2026-11-27 | 2026-11-27 | P1 | Plan **Validate** as its own feature: schema checks of structure, results shown with **Lint**; first wave XML only: DTD (self-implemented) and XSD (pure-Rust crate, chosen after a `wasm32-unknown-unknown` build spike of `xsd-schema` vs `xmlschema`); no libxml2, no RELAX NG | `docs/memo/2026-11-27-brainstorm.md` Validate section | M | Scope written into its own spec in `docs/spec/` |
 
 ## Pending verification
