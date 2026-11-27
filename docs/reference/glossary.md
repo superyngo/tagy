@@ -40,8 +40,16 @@ A name–value pair on an **Element**.
 _Avoid_: Property, field.
 
 **Text node**:
-A **Node** holding character data between or inside **Elements**.
-_Avoid_: String, value.
+A **Node** holding character data between or inside **Elements**. It has no tag, no
+**Attributes**, and no children. **Element** and Text node are the only two kinds of **Node**:
+text that carries attributes, such as `<b class="x">world</b>`, is an **Element** whose only
+child is a Text node, not a third kind.
+_Avoid_: String, value, implicit text, explicit text.
+
+**Wrap**:
+Putting a new **Element** around a **Text node** (or other **Nodes**); the only way text gains a
+tag or **Attributes**. **Unwrap** is the inverse: remove the **Element** and keep its children.
+_Avoid_: Promote, lift.
 
 **Mixed content**:
 An **Element** whose children interleave **Text nodes** and **Elements**, as in
