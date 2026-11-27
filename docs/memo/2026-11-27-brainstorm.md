@@ -28,8 +28,8 @@
 
 ### 待處理
 
-- 把以上定案寫進第一份 spec（BACKLOG O1）。
-- 規劃格式化與 lint（BACKLOG O2）。
+- 順序：先討論格式化與 lint（BACKLOG O2），再寫 spec。
+- 寫成兩份 spec：節點模型等定案（BACKLOG O1）一份；格式化與 lint（O2）另一份，引用 O1。O1 只寫分界：存檔時空白原樣寫回。
 
 ---
 
