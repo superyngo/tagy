@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### 2026-11-27
+- docs: memo overview lists W7–W9 under decided; W5 toggle state is session-only (W8)
 - docs: decide whitespace text nodes, node identity, row layout (W7–W9); plan Format and Lint (O2)
 - docs: memo overview of decisions so far; backlog W7–W9 parking-lot items
 - docs: decide automatic Wrap tag rule (format/dialect default, editable; none in Markdown)
