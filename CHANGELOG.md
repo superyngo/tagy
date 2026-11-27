@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### 2026-11-27
+- docs: draft O1 spec — document tree and editing session; glossary Session, Intent, Snapshot, View row, Detail panel
 - docs: Lint and Validate results display and live timing decided; O2 discussion closed
 - docs: architecture follows confy — pure-Rust core shared by TUI, web and Tauri app (W11)
 - docs: Validate scope — DTD self-implemented, XSD via pure-Rust crate after wasm spike; no libxml2, no RELAX NG

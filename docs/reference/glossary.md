@@ -92,3 +92,28 @@ _Avoid_: Conversion, translation.
 The XML vocabulary defined by the CommonMark spec (`cmark -t xml`): `document`, `heading`,
 `paragraph`, `list`, and so on. tagy names Markdown **Nodes** with it.
 _Avoid_: Markdown AST.
+
+**Session**:
+One open document in `tagy-core`: its **Document tree** plus all editor state (selection,
+collapse). The only interface hosts (TUI, web, app) use, and the one seam tests use.
+_Avoid_: Editor, buffer, workspace.
+
+**Intent**:
+One user action dispatched to a **Session** (e.g. **Wrap**, rename tag, add **Attribute**).
+Atomic: it applies fully or is refused and leaves the document unchanged.
+_Avoid_: Command, mutation, action.
+
+**Snapshot**:
+Everything a host draws for a **Session** at one moment: the **View rows**, the selection, and
+the **Detail panel** content. Serializable, so it crosses the wasm boundary.
+_Avoid_: State, view model.
+
+**View row**:
+One line of the tree as shown: a **Node** ID, depth, kind, and display text. A hidden
+whitespace **Text node** has none; a collapsed **Element** is one row.
+_Avoid_: Line, item.
+
+**Detail panel**:
+The pane that shows the selected **Node** in full: an **Element**'s **Attributes** as a
+key-value table, or a **Text node**'s whole text.
+_Avoid_: Inspector, properties pane.

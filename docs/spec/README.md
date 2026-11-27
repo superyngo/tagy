@@ -5,7 +5,9 @@ written, never rewritten. Current behavior lives in [`../reference/`](../referen
 
 ## In progress
 
-_None._
+| Date | Document | Status |
+|---|---|---|
+| 2026-11-27 | [Document tree and editing session](2026-11-27-document-tree.md) | Draft |
 
 ## Landed
 
