@@ -58,7 +58,7 @@ _Avoid_: Promote, lift.
 **Mixed content**:
 An **Element** whose children interleave **Text nodes** and **Elements**, as in
 `<p>Hello <b>world</b>!</p>`. Order and whitespace may be significant. How the tree shows it is
-an open question (see `docs/plan/BACKLOG.md`).
+provisional (W5 in `docs/plan/BACKLOG.md`).
 _Avoid_: —
 
 **XML export**:

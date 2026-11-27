@@ -38,6 +38,9 @@ that would promote it to Open, and the date it was last re-read.
 | W4 HTML-like templates (Vue, Svelte, JSX, BBCode) out of scope | Each needs its own parser; would slow the main line | Explicit owner request | 2026-11-27 |
 | W5 Provisional 2026-11-27: **Mixed content** display — granularity defaults by auto rule (text among children → collapsed; element-only → expanded); user can toggle per **Node** and the state is remembered | Needs hands-on use to tune | First usable tree UI — re-evaluate after real use | 2026-11-27 |
 | W6 Decided 2026-11-27: two **Node** kinds only (**Element**, **Text node**); text gains a tag or attributes only by **Wrap**. **Wrap** is both manual (user command) and automatic (an action only an **Element** allows, e.g. adding an **Attribute** to a **Text node**). Automatic **Wrap** tag: default from the **Source format** or **Dialect** (HTML: `span`; generic XML: empty, user fills it; a **Dialect** may supply one), always editable by the user; not allowed in Markdown | Exploration stage; not an ADR (repo-docs 16) | First spec lands — restate there | 2026-11-27 |
+| W7 Whitespace-only **Text nodes** (XML indentation) — how the tree shows or hides them | Node model just settled; display rules not designed | Tree UI design starts | 2026-11-27 |
+| W8 Remembering per-**Node** collapse state (W5) across sessions needs a stable node identity | Display rule is provisional | W5 confirmed after hands-on use | 2026-11-27 |
+| W9 Tree UI: how an **Element** row splits and recombines tag and **Attributes** | Parked by owner until tree editor design | Tree UI design starts | 2026-11-27 |
 
 ## Done
 
