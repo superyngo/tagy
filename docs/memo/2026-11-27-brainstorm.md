@@ -131,3 +131,11 @@
   - WebAssembly：`libxml` crate 不支援 wasm32；libxml2 本身可用 Emscripten 編成 wasm，現成套件 `libxml2-wasm`（瀏覽器與 Node，支援 DTD／XSD／RELAX NG 驗證）。但要從 JS 端呼叫，網頁版與桌面版會是兩條程式路徑。來源：https://github.com/jameslan/libxml2-wasm
   - 功能風險：libxml2 NEWS 寫明 RELAX NG「狀態不佳、長期移除候選」；Schematron 2.15 起預設關閉、預計 2.16 移除；`libxml2-wasm` 已將 RELAX NG 標為 deprecated。專案由志工以盡力而為方式維護。來源：https://gitlab.gnome.org/GNOME/libxml2/-/raw/master/NEWS
   - 結論：DTD、XSD 穩；RELAX NG 有被移除的風險。
+- 決定（使用者，2026-11-27）：需要網頁版；第一版只做 DTD 與 XSD，RELAX NG 拿掉。（定案）
+- 純 Rust 替代方案調查（2026-11-27）：
+  - `xsd-schema` 0.3.2：XSD 1.0 W3C 測試 99.96% 通過、1.1 為 99.7%；含少量 unsafe（附 Miri 驗證）；授權 Apache-2.0 OR MPL-2.0；README 未提 wasm，需實測。來源：https://github.com/semyonc/xsd-schema
+  - `xmlschema` 0.0.14：W3C 已判定測試 96.1%；`forbid(unsafe_code)`、無 C，明確以支援 WebAssembly 為目標。來源：https://github.com/sebastienrousseau/xmlschema
+  - 兩者都是 0.x，仍年輕。
+  - 自行從頭實作 XSD：規格龐大（型別衍生、替換群組、identity constraint、約 45 種內建型別、自有 regex 方言、import／include），不划算。DTD 規模小，可自行實作。
+- 決定（2026-11-27）：不用 libxml2。XSD 採純 Rust crate，先做 wasm 實驗比較 `xsd-schema` 與 `xmlschema` 再選；DTD 自行實作。（定案）
+- 使用者補充：UI 打算用 Tauri 跨平台。

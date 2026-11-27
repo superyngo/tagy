@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### 2026-11-27
+- docs: Validate scope — DTD self-implemented, XSD via pure-Rust crate after wasm spike; no libxml2, no RELAX NG
 - docs: Lint first-wave checks decided; new O3 Validate (XML only); libxml2 cross-platform findings in memo
 - docs: O2 scope, indent source, Format rules decided; Markdown front matter as one raw element (W10 for key-value editing)
 - docs: memo records order — discuss O2 first, then two specs (O1, O2)

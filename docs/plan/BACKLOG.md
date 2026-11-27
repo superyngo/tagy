@@ -11,7 +11,7 @@ last checked against the tree — not when it was opened.
 |---|---|---|---|---|---|---|---|
 | O1 | 2026-11-27 | 2026-11-27 | P1 | Write the node model, **Wrap** rules, whitespace, node identity, row layout (W6–W9) and **Front matter** into the first spec; display provisional (W5) | `docs/reference/glossary.md` **Mixed content** | S | Decision written into the first spec in `docs/spec/` |
 | O2 | 2026-11-27 | 2026-11-27 | P3 | Plan **Format** and **Lint** as separate features: **Format** runs only on user command, **Lint** only reports; neither runs on save | `docs/reference/glossary.md` **Format**, **Lint** | M | Scope written into a spec in `docs/spec/` |
-| O3 | 2026-11-27 | 2026-11-27 | P1 | Plan **Validate** as its own feature: schema checks of structure, results shown with **Lint**; first wave XML only, schema languages under discussion | `docs/memo/2026-11-27-brainstorm.md` Validate section | M | Scope written into its own spec in `docs/spec/` |
+| O3 | 2026-11-27 | 2026-11-27 | P1 | Plan **Validate** as its own feature: schema checks of structure, results shown with **Lint**; first wave XML only: DTD (self-implemented) and XSD (pure-Rust crate, chosen after a wasm build spike of `xsd-schema` vs `xmlschema`); no libxml2, no RELAX NG | `docs/memo/2026-11-27-brainstorm.md` Validate section | M | Scope written into its own spec in `docs/spec/` |
 
 ## Pending verification
 
