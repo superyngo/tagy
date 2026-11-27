@@ -1,0 +1,6 @@
+# Agent scratch (docs/tmp/<agent>-scratch/); docs/tmp/archive/*.tar.gz is tracked
+docs/tmp/*-scratch/
+
+# OS / editor
+.DS_Store
+*.swp
